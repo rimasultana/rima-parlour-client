@@ -4,7 +4,7 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <a>Item 1</a>
+        <a href="">Home</a>
       </li>
       <li>
         <a>Parent</a>
@@ -15,8 +15,8 @@ const Navbar = () => {
     </>
   );
   return (
-    <div>
-      <div className="navbar bg-base-100 shadow-sm">
+    <div className="w-full bg-[#FFF8F5] py-2">
+      <div className="navbar  w-11/12 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -33,7 +33,7 @@ const Navbar = () => {
           </div>
           <h3 className="btn btn-ghost text-2xl">
             {" "}
-            <GiFlowerEmblem className="text-3xl text-pink-600"/>
+            <GiFlowerEmblem className="text-3xl text-pink-600" />
             Rima Parlour
           </h3>
         </div>
