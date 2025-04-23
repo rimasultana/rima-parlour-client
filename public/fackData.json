@@ -1,0 +1,63 @@
+[
+    {
+      "img": "https://i.ibb.co.com/GQF38yHj/Group-1372.png",
+      "title": "Haircut & Styling",
+      "sort_description": "A stylish haircut and styling session tailored to your preferences.",
+      "price": 15.99
+    },
+    {
+      "img": "https://i.ibb.co.com/3YPkMZnj/Group-1373.png",
+      "title": "Manicure",
+      "sort_description": "Nail care and beautiful polish application for a refreshed look.",
+      "price": 12.99
+    },
+    {
+      "img": "https://i.ibb.co.com/FbsRgMK0/Group-1374.png",
+      "title": "Pedicure",
+      "sort_description": "Pamper your feet with a soothing pedicure treatment.",
+      "price": 18.99
+    },
+    {
+      "img": "https://i.ibb.co.com/GQF38yHj/Group-1372.png",
+      "title": "Facial Treatment",
+      "sort_description": "A rejuvenating facial to hydrate and refresh your skin.",
+      "price": 25.99
+    },
+    {
+      "img": "https://i.ibb.co.com/3YPkMZnj/Group-1373.png",
+      "title": "Hair Coloring",
+      "sort_description": "Get a fresh new look with a professional hair color treatment.",
+      "price": 40.99
+    },
+    {
+      "img": "https://i.ibb.co.com/FbsRgMK0/Group-1374.png",
+      "title": "Bridal Makeup",
+      "sort_description": "Exquisite bridal makeup to make your special day perfect.",
+      "price": 70.99
+    },
+    {
+      "img": "https://i.ibb.co.com/GQF38yHj/Group-1372.png",
+      "title": "Waxing",
+      "sort_description": "Effective and quick waxing services for smooth skin.",
+      "price": 9.99
+    },
+    {
+      "img": "https://i.ibb.co.com/3YPkMZnj/Group-1373.png",
+      "title": "Hair Spa",
+      "sort_description": "Deep conditioning and care for your hair to restore its health.",
+      "price": 35.99
+    },
+    {
+      "img": "https://i.ibb.co.com/FbsRgMK0/Group-1374.png",
+      "title": "Makeup Application",
+      "sort_description": "Professional makeup application for any event.",
+      "price": 30.99
+    },
+    {
+      "img": "https://i.ibb.co.com/GQF38yHj/Group-1372.png",
+      "title": "Body Massage",
+      "sort_description": "Relax and unwind with a soothing body massage.",
+      "price": 50.99
+    }
+  ]
+  

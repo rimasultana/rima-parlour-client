@@ -3,7 +3,7 @@ import { IoFlower, IoLogoYoutube } from "react-icons/io5";
 
 const Footer = () => {
   return (
-    <footer className="footer footer-horizontal footer-center bg-black text-primary-content p-10">
+    <footer className="footer footer-horizontal footer-center bg-[#F63E7B] text-primary-content p-10">
       <aside>
         <IoFlower className="text-5xl" />
         <p className="font-bold">
