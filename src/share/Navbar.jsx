@@ -1,16 +1,48 @@
 import { GiFlowerEmblem } from "react-icons/gi";
+import { NavLink,Link } from "react-router";
 
 const Navbar = () => {
   const links = (
     <>
       <li>
-        <a href="">Home</a>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? "hover:text-pink-800 font-bold" : "text-gray-600"
+          }
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <a>Parent</a>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? "hover:text-pink-800 font-bold" : "text-gray-600"
+          }
+        >
+          Our Portfolio
+        </NavLink>
       </li>
       <li>
-        <a>Item 3</a>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? "hover:text-pink-800 font-bold" : "text-gray-600"
+          }
+        >
+          Our Team
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? "hover:text-pink-800 font-bold" : "text-gray-600"
+          }
+        >
+          Contact
+        </NavLink>
       </li>
     </>
   );
@@ -41,7 +73,7 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn bg-pink-700 text-white font-bold">Login</a>
+          <Link to='/login' className="btn bg-pink-700 text-white font-bold">Login</Link>
         </div>
       </div>
     </div>

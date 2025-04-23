@@ -24,7 +24,7 @@ const OurServices = () => {
           {service.slice(0,6).map((ser) => (
             <div key={ser._id} className="card bg-base-100 w-96 shadow-sm">
               <figure>
-                <img src={ser.img} alt="Shoes" />
+                <img className="" src={ser.img} alt="Shoes" />
               </figure>
               <div className="card-body">
                 <h2 className="card-title text-center">{ser.title}</h2>
