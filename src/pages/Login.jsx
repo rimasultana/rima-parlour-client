@@ -1,11 +1,33 @@
 import { FaEnvelope, FaLock } from "react-icons/fa";
 import { Link } from "react-router";
 import SocialLogin from "../share/SocialLogin";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
+import useAuth from "../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Login = () => {
+  const { loginUser } = useAuth();
+  const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
+
+  const onSubmit = (data) => {
+    loginUser(data.email, data.password)
+      .then((res) => {
+        toast.success("Login Successfully", res.data);
+        navigate("/");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#2d0b4c] via-[#380e4a] to-[#2f1a70] font-sans">
-      <div className="backdrop-blur-md bg-white/10 border border-white/20 shadow-[0_0_60px_rgba(255,255,255,0.1)] rounded-[2rem] p-8 md:p-12 w-[90%] max-w-md text-white">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="backdrop-blur-md bg-white/10 border border-white/20 shadow-[0_0_60px_rgba(255,255,255,0.1)] rounded-[2rem] p-8 md:p-12 w-[90%] max-w-md text-white"
+      >
         {/* Avatar */}
         <div className="flex justify-center mb-6">
           <div className="h-24 w-24 rounded-full bg-white/20 flex items-center justify-center text-white text-5xl animate-pulse ring-2 ring-pink-400 ring-offset-4">
@@ -17,6 +39,7 @@ const Login = () => {
         <div className="flex items-center border-b border-white/30 mb-6">
           <FaEnvelope className="mr-3 text-pink-400" />
           <input
+            {...register("email", { required: true })}
             type="email"
             placeholder="Email ID"
             className="bg-transparent w-full py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-pink-500"
@@ -27,6 +50,7 @@ const Login = () => {
         <div className="flex items-center border-b border-white/30 mb-6">
           <FaLock className="mr-3 text-pink-400" />
           <input
+            {...register("password", { required: true })}
             type="password"
             placeholder="Password"
             className="bg-transparent w-full py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-pink-500"
@@ -59,7 +83,7 @@ const Login = () => {
         </p>
         <div className="divider">OR</div>
         <SocialLogin />
-      </div>
+      </form>
     </div>
   );
 };
