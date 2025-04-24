@@ -1,10 +1,11 @@
 import { FaEnvelope, FaLock } from "react-icons/fa";
+import { Link } from "react-router";
+import SocialLogin from "../share/SocialLogin";
 
 const Login = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#2d0b4c] via-[#380e4a] to-[#2f1a70] font-sans">
       <div className="backdrop-blur-md bg-white/10 border border-white/20 shadow-[0_0_60px_rgba(255,255,255,0.1)] rounded-[2rem] p-8 md:p-12 w-[90%] max-w-md text-white">
-        
         {/* Avatar */}
         <div className="flex justify-center mb-6">
           <div className="h-24 w-24 rounded-full bg-white/20 flex items-center justify-center text-white text-5xl animate-pulse ring-2 ring-pink-400 ring-offset-4">
@@ -38,13 +39,26 @@ const Login = () => {
             <input type="checkbox" className="accent-pink-500" />
             <span>Remember me</span>
           </label>
-          <a href="#" className="hover:text-pink-300">Forgot Password?</a>
+          <a href="#" className="hover:text-pink-300">
+            Forgot Password?
+          </a>
         </div>
 
         {/* Login Button */}
         <button className="w-full py-3 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 hover:scale-105 transition-transform duration-200 font-semibold text-white">
           LOGIN
         </button>
+        <p className="text-center text-sm text-white/70 py-2">
+          Already have an account?{" "}
+          <Link
+            to="/register"
+            className="text-purple-300 underline hover:text-pink-400 transition"
+          >
+            Register
+          </Link>
+        </p>
+        <div className="divider">OR</div>
+        <SocialLogin />
       </div>
     </div>
   );
