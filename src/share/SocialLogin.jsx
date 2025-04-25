@@ -3,17 +3,29 @@ import { FcGoogle } from "react-icons/fc";
 import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const SocialLogin = () => {
   const navigate = useNavigate();
   const { googleLogin } = useAuth();
+  const axiosPublic = useAxiosPublic();
 
   const handlaGoogleLogin = () => {
     googleLogin()
       .then((res) => {
-        console.log(res);
-        toast.success("Login Successfully");
-        navigate("/");
+        const userInfo = {
+          email: res.user?.email,
+          name: res.user?.displayName,
+        };
+        axiosPublic.post("/users", userInfo).then((res) => {
+          if (res.data.insertedId) {
+            toast.success("Registered Successfully!");
+            navigate("/");
+          }else{
+            toast.success("Login SuccessFully")
+            navigate("/")
+          }
+        });
       })
       .catch((error) => {
         toast.error(error.message);

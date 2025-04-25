@@ -5,17 +5,28 @@ import useAuth from "../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Register = () => {
   const { createSingUp } = useAuth();
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic()
 
   const onSubmit = (data) => {
     createSingUp(data.email, data.password)
-      .then((res) => {
-        toast.success("Register Successfully", res.data);
-        navigate("/");
+      .then(() => {
+        const userInfo = {
+          name: data.fullName,
+          email: data.email,
+        }
+        axiosPublic.post("/users", userInfo)
+        .then((res)=> {
+          if (res.data.insertedId) {
+            toast.success("Registered Successfully!");
+            navigate("/");
+          }
+        })
       })
       .catch((error) => {
         toast.error(error.message);
@@ -53,6 +64,15 @@ const Register = () => {
             className="bg-transparent w-full py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
         </div>
+        <div className="flex items-center border-b border-white/30 mb-6">
+          <FaUser className="mr-3 text-purple-300" />
+          <input
+            {...register("photoURL")}
+            type="text"
+            placeholder="Photo URL"
+            className="bg-transparent w-full py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-purple-500"
+          />
+        </div>
 
         <div className="flex items-center border-b border-white/30 mb-6">
           <FaLock className="mr-3 text-purple-300" />
@@ -64,18 +84,6 @@ const Register = () => {
             className="bg-transparent w-full py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
         </div>
-
-        <div className="flex items-center border-b border-white/30 mb-6">
-          <FaLock className="mr-3 text-purple-300" />
-          <input
-            {...register("confirmPassword", { required: true })}
-            minLength={6}
-            type="password"
-            placeholder="Confirm Password"
-            className="bg-transparent w-full py-2 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-purple-500"
-          />
-        </div>
-
         <div className="text-sm text-white/70 mb-6">
           <label className="flex items-center space-x-2">
             <input

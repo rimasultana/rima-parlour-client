@@ -1,7 +1,10 @@
 import { GiFlowerEmblem } from "react-icons/gi";
-import { NavLink,Link } from "react-router";
+import { NavLink, Link } from "react-router";
+import useAuth from "../hooks/useAuth";
+import { BiSolidUserCircle } from "react-icons/bi";
 
 const Navbar = () => {
+  const { user, logOut } = useAuth();
   const links = (
     <>
       <li>
@@ -36,7 +39,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/"
+          to="/contact"
           className={({ isActive }) =>
             isActive ? "hover:text-pink-800 font-bold" : "text-gray-600"
           }
@@ -72,8 +75,28 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
-        <div className="navbar-end">
-          <Link to='/login' className="btn bg-pink-700 text-white font-bold">Login</Link>
+        <div className="navbar-end flex items-center gap-2">
+          {user?.email ? (
+            <>
+              {user?.photoURL ? (
+                <img
+                  className="h-10 rounded-full w-10 mr-2"
+                  src={user?.photoURL}
+                  title={user?.displayName || "User"}
+                  alt="User"
+                />
+              ) : (
+                <BiSolidUserCircle className="text-2xl " />
+              )}
+              <button onClick={logOut} className="btn btn-success">
+                LogOut
+              </button>
+            </>
+          ) : (
+            <Link to="/login" className="btn btn-accent">
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>

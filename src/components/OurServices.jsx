@@ -7,7 +7,6 @@ const OurServices = () => {
     fetch("/fackData.json")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setService(data);
       })
       .catch((error) => {
@@ -21,8 +20,8 @@ const OurServices = () => {
           Our Awesome <span className="text-[#F63E7B]">Services</span>
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-5">
-          {service.slice(0,6).map((ser) => (
-            <div key={ser._id} className="card bg-base-100 w-96 shadow-sm">
+          {service.slice(0,6).map((ser, index) => (
+            <div key={index} className="card bg-base-100 w-96 shadow-sm">
               <figure>
                 <img className="" src={ser.img} alt="Shoes" />
               </figure>
