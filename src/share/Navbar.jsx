@@ -19,22 +19,22 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/"
+          to="/addservice"
           className={({ isActive }) =>
             isActive ? "hover:text-pink-800 font-bold" : "text-gray-600"
           }
         >
-          Our Portfolio
+         Add Products
         </NavLink>
       </li>
       <li>
         <NavLink
-          to="/"
+          to="/userlist"
           className={({ isActive }) =>
             isActive ? "hover:text-pink-800 font-bold" : "text-gray-600"
           }
         >
-          Our Team
+          user List
         </NavLink>
       </li>
       <li>

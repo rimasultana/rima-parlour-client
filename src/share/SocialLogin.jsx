@@ -21,9 +21,9 @@ const SocialLogin = () => {
           if (res.data.insertedId) {
             toast.success("Registered Successfully!");
             navigate("/");
-          }else{
-            toast.success("Login SuccessFully")
-            navigate("/")
+          } else {
+            toast.success("Login SuccessFully");
+            navigate("/");
           }
         });
       })
@@ -35,7 +35,7 @@ const SocialLogin = () => {
     <div>
       <button
         onClick={handlaGoogleLogin}
-        className="w-full flex items-center justify-center gap-3 border border-white/30 hover:border-purple-300 hover:bg-white/10 transition text-white font-semibold py-2 rounded-xl shadow-sm"
+        className="w-full flex items-center justify-center gap-3 border border-white/30 hover:border-purple-300 hover:bg-white/10 transition text-black font-semibold py-2 rounded-xl shadow-sm"
       >
         <FcGoogle className="text-2xl" />
         Continue with Google

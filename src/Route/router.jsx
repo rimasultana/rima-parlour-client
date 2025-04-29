@@ -5,6 +5,9 @@ import Home from "../pages/Home/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Contact from "../pages/Contact";
+import ViewDetails from "../pages/ViewDetails";
+import AddService from "../pages/Home/AddService";
+import UserList from "../pages/UserList";
 
 const router = createBrowserRouter([
   {
@@ -21,13 +24,24 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path:'/register',
-        element:<Register/>
+        path: "/register",
+        element: <Register />,
       },
       {
-        path: "/contact",
-        element: <Contact/>
-      }
+        path: "/addservice",
+        element: <AddService />,
+      },
+
+      {
+        path: "/userlist",
+        element: <UserList />,
+      },
+      {
+        path: "/viewdetails/:id",
+        element: <ViewDetails />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/items/${params.id}`),
+      },
     ],
   },
 ]);
