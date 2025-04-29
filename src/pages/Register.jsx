@@ -12,7 +12,6 @@ const Register = () => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
     createSingUp(data.email, data.password)
       .then((res) => {
         if (res?.data?.insertedId) {
