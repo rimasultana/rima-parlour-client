@@ -1,5 +1,5 @@
 import { FaEnvelope, FaLock } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import SocialLogin from "../share/SocialLogin";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
@@ -10,12 +10,15 @@ const Login = () => {
   const { loginUser } = useAuth();
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location.state?.from?.pathname);
+  const from = location.state?.from?.pathname || "/";
 
   const onSubmit = (data) => {
     loginUser(data.email, data.password)
       .then((res) => {
         toast.success("Login Successfully", res.data);
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         toast.error(error.message);
@@ -89,4 +92,3 @@ const Login = () => {
 };
 
 export default Login;
-

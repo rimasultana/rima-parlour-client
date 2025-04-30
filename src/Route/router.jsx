@@ -8,6 +8,7 @@ import Contact from "../pages/Contact";
 import ViewDetails from "../pages/ViewDetails";
 import AddService from "../pages/Home/AddService";
 import UserList from "../pages/UserList";
+import PrivatRoute from "./PrivatRoute";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/addservice",
-        element: <AddService />,
+        element: (
+          <PrivatRoute>
+            {" "}
+            <AddService />
+          </PrivatRoute>
+        ),
       },
 
       {
@@ -38,7 +44,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/viewdetails/:id",
-        element: <ViewDetails />,
+        element: (
+          <PrivatRoute>
+            <ViewDetails />
+          </PrivatRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/items/${params.id}`),
       },
