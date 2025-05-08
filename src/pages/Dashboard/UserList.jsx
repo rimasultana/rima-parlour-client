@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useAxiosSecure from "../hooks/useAxiosSecure";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { FaUsers } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
@@ -14,17 +14,16 @@ const UserList = () => {
     });
   }, [axiosSecure]);
   const hanDeleteUser = (id) => {
-    console.log(id);
-    axiosSecure.delete(`/users/${id}`).then((res) => {
-      Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
-      }).then((result) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      axiosSecure.delete(`/users/${id}`).then((res) => {
         if (res?.data?.acknowledged) {
           if (result.isConfirmed) {
             Swal.fire({

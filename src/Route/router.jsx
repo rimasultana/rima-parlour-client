@@ -1,14 +1,15 @@
 import { createBrowserRouter } from "react-router";
 import ErrorPage from "../components/ErrorPage";
 import MainLayOut from "../LayOut/MainLayOut";
+import DashBoardLayout from "../LayOut/DashBoardLayout";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import Contact from "../pages/Contact";
 import ViewDetails from "../pages/ViewDetails";
 import AddService from "../pages/Home/AddService";
-import UserList from "../pages/UserList";
+import UserList from "../pages/Dashboard/UserList";
 import PrivatRoute from "./PrivatRoute";
+import AdminHome from "../pages/Dashboard/AdminHome";
 
 const router = createBrowserRouter([
   {
@@ -39,10 +40,6 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/userlist",
-        element: <UserList />,
-      },
-      {
         path: "/viewdetails/:id",
         element: (
           <PrivatRoute>
@@ -51,6 +48,21 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/items/${params.id}`),
+      },
+    ],
+  },
+
+  {
+    path: "/dashboard",
+    element: <DashBoardLayout />,
+    children: [
+      {
+        path: "/dashboard/adminhome",
+        element: <AdminHome />,
+      },
+      {
+        path: "/dashboard/userlist",
+        element: <UserList />,
       },
     ],
   },

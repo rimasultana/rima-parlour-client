@@ -1,10 +1,11 @@
 import { GiFlowerEmblem } from "react-icons/gi";
-import { NavLink, Link } from "react-router";
 import useAuth from "../hooks/useAuth";
 import { BiSolidUserCircle } from "react-icons/bi";
+import { NavLink, Link } from "react-router";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
+  
   const links = (
     <>
       <li>
@@ -24,7 +25,7 @@ const Navbar = () => {
             isActive ? "hover:text-pink-800 font-bold" : "text-gray-600"
           }
         >
-         Add Products
+          Add Products
         </NavLink>
       </li>
       <li>
@@ -39,12 +40,12 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/contact"
+          to="/dashboard"
           className={({ isActive }) =>
             isActive ? "hover:text-pink-800 font-bold" : "text-gray-600"
           }
         >
-          Contact
+        Dashboard
         </NavLink>
       </li>
     </>
